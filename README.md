@@ -52,20 +52,6 @@ sudo chmod -R 755 odoo_data/
 3. The **Previous Reading** is automatically populated from the previous invoice.
 4. **Actual Reading** and **Quantity** are calculated automatically.
 
-## Screenshots
-
-### Invoice Form
-
-![Invoice Module Overview](images/odoo_meter_reading_module.png)
-
-### Invoice Example
-
-![Invoice 1](images/odoo_inv_1.png)
-
-### Invoice PDF
-
-![Invoice PDF](images/odoo_inv_2.png)
-
 ## Sample Screenshots
 
 ### Invoice Module Overview
