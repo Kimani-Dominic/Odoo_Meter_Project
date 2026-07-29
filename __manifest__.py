@@ -5,7 +5,7 @@
     "category": "Accounting",
     "depends": ["account"],
     "data": [
-        "security/ir.model.access.csv"
+        "security/ir.model.access.csv",
         "views/account_move_views.xml",
         "reports/invoice_report.xml",
     ],

@@ -12,8 +12,8 @@
             <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='quantity']"
                    position="before">
 
-                <field name="previous_reading"/>
                 <field name="new_reading"/>
+                <field name="previous_reading"/>
                 <field name="actual_reading" readonly="1"/>
 
             </xpath>

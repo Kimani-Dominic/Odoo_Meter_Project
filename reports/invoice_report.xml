@@ -5,18 +5,18 @@
               inherit_id="account.report_invoice_document">
 
         <xpath expr="//th[@name='th_quantity']" position="before">
-            <th class="text-end">Previous</th>
             <th class="text-end">New</th>
+            <th class="text-end">Previous</th>
             <th class="text-end">Actual</th>
         </xpath>
 
         <xpath expr="//td[@name='td_quantity']" position="before">
             <td class="text-end">
-                <span t-field="line.previous_reading"/>
+                <span t-field="line.new_reading"/>
             </td>
 
             <td class="text-end">
-                <span t-field="line.new_reading"/>
+                <span t-field="line.previous_reading"/>
             </td>
 
             <td class="text-end">
