@@ -1,35 +1,85 @@
 # Meter Invoice Reading
 
-## Meter Invoice Reading
-This module adds meter-based invoicing support to Odoo by tracking meter readings on invoice lines and calculating actual consumption automatically.
-
-## Requirements
-- Odoo 19 Community
-- PostgreSQL 16
-- Standard Odoo invoicing and product setup
+A custom Odoo 19 Accounting module that adds meter based billing to customer invoices by tracking meter readings, calculating consumption, and synchronizing invoice quantities.
 
 ## Features
-- Adds **Previous Reading** field to invoice lines
-- Adds **New Reading** field to invoice lines
-- Calculates **Actual Reading** (consumption) automatically
-- Synchronizes invoice line **Quantity** with consumption
-- Automatically retrieves the previous meter reading for the same product/customer
-- Extends invoice PDF output to include meter reading details
-- Validates readings to prevent negative consumption
+
+* Adds **Previous Reading**, **New Reading**, and **Actual Reading** to invoice lines.
+* Automatically calculates consumption (`Actual Reading = New Reading - Previous Reading`).
+* Synchronizes invoice **Quantity** with the calculated consumption.
+* Automatically retrieves the previous meter reading from the customer's last posted invoice for the same product.
+* Includes meter readings on the printed invoice PDF.
+* Prevents negative consumption.
+
+## Requirements
+
+* Odoo 19 Community
+* Accounting module installed
 
 ## Installation
-1. Copy the `meter_invoice` folder into your Odoo addons directory.
-2. Restart the Odoo service.
-3. Update the Apps list from the Apps menu.
-4. Install **Meter Invoice Reading**.
 
-## Testing
-1. Create an initial invoice with a meter reading on the invoice line.
-2. Post the invoice.
-3. Create a second invoice for the same customer and product.
-4. Confirm the **Previous Reading** is populated from the prior invoice's **New Reading**.
-5. Verify that the calculated quantity matches the actual consumption and appears correctly on the invoice PDF.
+1. Download or clone this repository.
+2. Copy the `meter_invoice` folder into your Odoo custom addons directory.
 
-## Notes
-- Designed for Odoo 19 and PostgreSQL 16.
-- Works with standard invoice workflows and printed PDF reports.
+```
+addons/
+└── meter_invoice/
+```
+
+3. If using Docker on Linux, ensure the addons and odoo_data directories are accessible to the Odoo container:
+
+```bash
+sudo chown -R 100:101 addons/
+sudo chown -R 100:101 odoo_data/
+
+sudo chmod -R 755 addons/
+sudo chmod -R 755 odoo_data/
+```
+
+> **Windows/macOS**: No ownership changes are typically required when using Docker Desktop. Ensure the addons directory is shared with Docker and has read/write permissions.
+
+
+4. Restart the Odoo service.
+
+5. Enable **Developer Mode**.
+6. Go to **Apps → Update Apps List**.
+7. Search for **Meter Invoice Reading** and install/activate the module.
+
+## Usage
+
+1. Create and post an invoice with meter readings.
+2. Create another invoice for the same customer and product.
+3. The **Previous Reading** is automatically populated from the previous invoice.
+4. **Actual Reading** and **Quantity** are calculated automatically.
+
+## Screenshots
+
+### Invoice Form
+
+![Invoice Module Overview](images/odoo_meter_reading_module.png)
+
+### Invoice Example
+
+![Invoice 1](images/odoo_inv_1.png)
+
+### Invoice PDF
+
+![Invoice PDF](images/odoo_inv_2.png)
+
+## Sample Screenshots
+
+### Invoice Module Overview
+![Invoice Module Overview](images/odoo_meter_reading_module.png)
+
+### Sample Invoice with Meter Readings
+Initial invoice with meter readings showing previous and new readings, along with calculated actual consumption.
+
+#### Invoice 1 Preview
+![Sample Invoice with Meter Readings](images/odoo_inv_1.png)
+
+
+#### Invoice 2 PDF Format
+
+![Sample Invoice PDF Output](images/odoo_inv_2.png)
+
+
